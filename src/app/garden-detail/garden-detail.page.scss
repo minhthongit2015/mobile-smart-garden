@@ -1,0 +1,331 @@
+
+ion-content {
+  --background: var(--sg-garden-backgroud);
+  // --ion-padding: 0;
+  isolation: isolate;
+  --overflow: hidden;
+}
+
+
+#nav-area {
+  header {
+    color: #6cd9ff;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 10px;
+  }
+}
+.nav-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15%;
+  margin-bottom: 20px;
+}
+.nav-separator {
+  color: #6cd9ff;
+  height: 1px;
+  background: #2a3756;
+  flex-grow: 1;
+}
+.nav {
+  color: #6cd9ff;
+  width: 20%;
+  height: 0;
+  padding-top: 20%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.focus {
+    .nav-icon {
+      border: 2px solid #78dfff;
+      box-shadow: 0 0 4px #0ff;
+    }
+  }
+
+  .nav-icon {
+    border: .5px solid #34bfea;
+    border-radius: 50%;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    img {
+      max-height: 70%;
+      max-width: 70%;
+    }
+  }
+  .nav-name {
+    color: #6cd9ff;
+    margin-top: 7px;
+    font: lighter normal normal 13px/1em "Quicksand";
+  }
+}
+
+
+
+/*****************************************************************************
+ *                                Overview Area                              *
+ *****************************************************************************/
+
+#overview-area {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.info-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &.cell-temp, &.cell-humi {
+    flex-grow: 1;
+  }
+  &.cell-light {
+    flex-grow: 3;
+  }
+  .info-cell-name {
+    color: #88ffeb;
+    text-align: center;
+    font: normal normal normal 18px/1em "Quicksand";
+  }
+}
+
+/* Style 1 - Temp & Humi */
+.visl-t1-wrapper {
+  background: #242c47;
+  width: 50px;
+  height: 167px;
+  border: 2px solid #293e68;
+  margin: 15px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Quicksand";
+  text-align: center;
+  color: #5ddbd2;
+  font-size: 14px;
+}
+.visl-t1-view {
+  margin: 3px;
+  position: relative;
+
+  &::before {
+    content: "";
+    background: linear-gradient(to bottom, #000019 0, #a400aa 100%);
+    mix-blend-mode: color-dodge;
+  }
+}
+.visl-t1-val {
+  text-align: center;
+  font-size: 10px;
+  line-height: 10px;
+  font-weight: bold;
+  margin-bottom: -2px;
+}
+$dot-colors:  (10,#8a1cd1), (9,#802ed4), (8,#7740d7), (7,#6d52d9), (6,#6464dc),
+              (5,#5a77df), (4,#5189e2), (3,#479be4), (2,#3eade7), (1,#34bfea);
+.visl-t1-dot {
+  height: 10px;
+  margin: 3px 2px;
+  border-radius: 2px;
+  position: relative;
+  
+  @each $color in $dot-colors {
+    &.point-#{nth($color,1)} {
+      background-color: nth($color,2);
+    }
+  }
+}
+
+/* Style 2 - Central */
+.visl-t2-wrapper {
+  color: #0ff;
+}
+.visl-t2-view {
+  position: relative;
+  margin: 5px 0;
+
+  .visl-t2-val {
+    color: #5ddbd2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .visl-t2-val-icon {
+      height: 40px;
+      margin-top: -18px;
+      img { max-height: 100%; }
+    }
+    .visl-t2-val-rating {
+      margin-top: -7px;
+      font: lighter 29px/32px "Quicksand";
+    }
+    .visl-t2-val-txt {
+      font: lighter 29px/32px "Quicksand";
+    }
+  }
+  .visl-t2-circle {
+    color: #0ff;
+    
+  }
+}
+#light-rating-mask {
+  transition: 10s stroke-dashoffset ease-in-out;
+}
+
+
+/*****************************************************************************
+ *                                Control Area                               *
+ *****************************************************************************/
+
+hr.ctl-separator {
+  width: 85%;
+  margin: 14px auto;
+  height: 2px;
+  background: #1b253e;
+}
+
+#control-area {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 7%;
+}
+
+.ctl {
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+
+  &.focus::before {
+    content: "";
+    background: linear-gradient(to bottom, #8c00d4 0, #2a85ff 100%);
+    opacity: .44;
+  }
+  & > * {
+    position: relative;
+  }
+
+  .ctl-icon {
+    height: 100px;
+
+    &.fan {
+      background: url(/src/assets/ui/ctl-fan.png) center center/contain no-repeat;
+    }
+    &.misting {
+      background: url(/src/assets/ui/ctl-misting.png) center center/contain no-repeat;
+    }
+    &.light_control {
+      background: url(/src/assets/ui/ctl-light_control.png) center center/contain no-repeat;
+    }
+    &.pump {
+      background: url(/src/assets/ui/ctl-pump.png) center center/contain no-repeat;
+    }
+  }
+  .ctl-name {
+    text-align: center;
+    color: #88ffeb;
+    font: normal normal normal 14px/16px "Roboto";
+    padding: 5px 0;
+  }
+  .ctl-state {
+    padding: 0 12px;
+
+    &.on {
+      #on-btn {
+        fill: #52a9ff;
+      }
+      #off-btn {
+        fill: #1c3859;
+      }
+    }
+    &.off {
+      #on-btn {
+        fill: #1c3859;
+      }
+      #on-btn-bg {
+        x: 27.31;
+        width: 68.69;
+        width: 68.69px;
+      }
+      #off-btn {
+        fill: #52a9ff;
+      }
+    }
+  }
+}
+
+
+
+/*****************************************************************************
+ *                                Toolbar Area                               *
+ *****************************************************************************/
+
+ // Thanh công cụ
+#station-toolbar {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+  background: #162966;
+  transform: translate3d(0, 100%, 0);
+  transition: 0.3s transform cubic-bezier(0.57, 0.18, 0.92, 0.71);
+
+  &.active {
+    transition: .5s transform cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: translate3d(0, 0%, 0);
+  }
+}
+
+// Nút công cụ
+.sta-tool {
+  width: 25%;
+  color: #6ae044;
+  font-family: "Quicksand";
+  text-align: center;
+
+  .tool-icon {
+    background: url(/src/assets/ui/garden-add-plant.png) center center/contain no-repeat;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+  }
+  .tool-name {
+    width: 100%;
+    white-space: pre;
+    overflow: visible;
+    font-size: 12px;
+    line-height: 12px;
+  }
+  
+  &.plant-remove {
+    color: #ea5757;
+    .tool-icon {
+      background-image: url(/src/assets/ui/garden-remove-plant.png);
+    }
+  }
+  // &.plant-add {
+  //   .tool-icon {
+  //     background-image: url(/src/assets/ui/garden-add-plant.png);
+  //   }
+  // }
+  &.plant-info {
+    color: #0b9cff;
+    .tool-icon {
+      background-image: url(/src/assets/ui/garden-info-plant.png);
+    }
+  }
+}

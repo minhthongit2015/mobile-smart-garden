@@ -1,0 +1,178 @@
+
+ion-content {
+  --background: var(--sg-garden-backgroud);
+  // --ion-padding: 0;
+  isolation: isolate;
+  --overflow: hidden;
+
+}
+
+#setting-page {
+}
+
+
+#setting-title {
+  height: 25px;
+  margin: 20px 20px 15px;
+}
+
+
+
+/*****************************************************************************
+ *                             Garden List Area                              *
+ *****************************************************************************/
+
+#garden-list {
+  margin: 0 20px 0;
+
+  #central-aura {
+    pointer-events: none;
+    background: url("/src/assets/ui/Asset 696 aura.svg") center center/contain no-repeat;
+    position: absolute;
+    top: 2%;
+    left: -5%;
+    width: 110%;
+    height: 0;
+    padding-top: 110%;
+    mix-blend-mode: screen;
+    transition: transform .3s ease-in-out;
+    &.state-1 { transform: translate3d(-10px, 0, 0); }
+    &.state-2 { transform: translate3d(0, 10px, 0); }
+    &.state-3 { transform: translate3d(10px, 0, 0); }
+  }
+}
+
+.light {
+  opacity: 0;
+  transition: .3s ease-in-out;
+  transition-property: opacity;
+  fill: #fff;
+  pointer-events: none;
+
+  &.show {
+    opacity: 0.24;
+  }
+}
+
+
+
+/*****************************************************************************
+ *                             Garden Detail Area                            *
+ *****************************************************************************/
+
+ #garden-detail {
+  position: absolute;
+  top: 21%;
+  left: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: Quicksand;
+  color: #fc7272;
+  font-weight: bold;
+  width: 80%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease-in-out;
+
+  &.view {
+    pointer-events: all;
+    opacity: 1;
+  }
+
+  .garden-name {
+    text-align: center;
+    font-size: 40px;
+  }
+
+  .info {
+    font-size: 16px;
+    margin: 5px 15px;
+  }
+
+  .info-cell {
+    color: #fc534f;
+    margin: 10px 0;
+    overflow: hidden;
+    font-weight: 500;
+    display: flex;
+
+    img {
+      height: 17px;
+      margin: 1px 5px 0;
+    }
+  }
+}
+
+.connect-btn {
+  color: #fff;
+  background: #fc7272;
+  display: inline-block;
+  margin: 5px auto;
+  padding: 2px 8px 4px;
+  border-radius: 2px;
+}
+
+
+
+/*****************************************************************************
+ *                                Toolbar Area                               *
+ *****************************************************************************/
+
+ // Thanh công cụ
+#station-toolbar {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+  background: #162966;
+  transform: translate3d(0, 100%, 0);
+  transition: 0.3s transform cubic-bezier(0.57, 0.18, 0.92, 0.71);
+
+  &.active {
+    transition: .5s transform cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: translate3d(0, 0%, 0);
+  }
+}
+
+// Nút công cụ
+.sta-tool {
+  width: 25%;
+  color: #6ae044;
+  font-family: "Quicksand";
+  text-align: center;
+
+  .tool-icon {
+    background: url(/src/assets/ui/garden-add-plant.png) center center/contain no-repeat;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+  }
+  .tool-name {
+    width: 100%;
+    white-space: pre;
+    overflow: visible;
+    font-size: 12px;
+    line-height: 12px;
+  }
+  
+  &.plant-remove {
+    color: #ea5757;
+    .tool-icon {
+      background-image: url(/src/assets/ui/garden-remove-plant.png);
+    }
+  }
+  // &.plant-add {
+  //   .tool-icon {
+  //     background-image: url(/src/assets/ui/garden-add-plant.png);
+  //   }
+  // }
+  &.plant-info {
+    color: #0b9cff;
+    .tool-icon {
+      background-image: url(/src/assets/ui/garden-info-plant.png);
+    }
+  }
+}

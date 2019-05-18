@@ -1,0 +1,155 @@
+
+<ion-header garden-style class="garden-header">
+  <div class="nav-btn nav-back" (click)="onBackBtn()">
+    <img src="/src/assets/ui/back-btn.png">
+  </div>
+  <div class="nav-btn nav-home" (click)="onHomeBtn()">
+    <img src="/src/assets/ui/home-btn.png">
+  </div>
+  <div class="nav-btn nav-logout" (click)="onLogoutBtn()">
+    <img src="/src/assets/ui/logout-btn.png">
+  </div>
+</ion-header>
+
+<ion-content garden-style>
+
+  <!-- ************************************************************************ -->
+  <!-- *                            Navigation Area                           * -->
+  <!-- ************************************************************************ -->
+
+  <div id="nav-area">
+    <header>{{station?.name}}</header>
+    <div class="nav-box">
+      <div class="nav" [ngClass]="{'focus': curSlide==1}" (click)="onChangeSlide(1)">
+        <div class="nav-icon"><img style="margin-top: 15%;" src="/src/assets/ui/nav-control.png"></div>
+        <div class="nav-name">Control</div>
+      </div>
+      <hr class="nav-separator">
+      <div class="nav" [ngClass]="{'focus': curSlide==2}" (click)="onChangeSlide(2)">
+        <div class="nav-icon"><img src="/src/assets/ui/nav-plants.png"></div>
+        <div class="nav-name">Plants</div>
+      </div>
+      <hr class="nav-separator">
+      <div class="nav" [ngClass]="{'focus': curSlide==3}" (click)="onChangeSlide(3)">
+        <div class="nav-icon"><img src="/src/assets/ui/nav-events.png"></div>
+        <div class="nav-name">Events</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ************************************************************************ -->
+  <!-- *                             Overview Area                            * -->
+  <!-- ************************************************************************ -->
+  <div id="slide-1">
+    <div id="overview-area">
+      <!-- Temperature -->
+      <div class="info-cell cell-temp">
+        <div class="info-cell-visl">
+          <div class="visl-t1-wrapper">
+            <div class="visl-t1-rating">{{station?.rating(station?.evaluations.temperature)}}</div>
+            <div class="visl-t1-view before-abs before-noe">
+              <div class="visl-t1-val">{{station?.state.temperature}}°C</div>
+              <div class="visl-t1-dot point-{{dot}}" *ngFor="let dot of station?.pointRange(station?.evaluations.temperature)"></div>
+            </div>
+          </div>
+        </div>
+        <div class="info-cell-name">Temp</div>
+      </div>
+  
+      <!-- Light -->
+      <div class="info-cell cell-light">
+        <div class="info-cell-visl">
+          <div class="visl-t2-wrapper">
+            <div class="visl-t2-view">
+              <div class="visl-t2-val abs">
+                <div class="visl-t2-val-icon"><img src="/src/assets/ui/light-bulb.png"></div>
+                <div class="visl-t2-val-rating">{{station?.rating(station?.evaluations.temperature)}}</div>
+                <div class="visl-t2-val-txt">{{station?.state.light}}lx</div>
+              </div>
+              <div class="visl-t2-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 488 488">
+                  <defs>
+                    <mask id="mask" x="38" y="34" width="412.01" height="416" maskUnits="userSpaceOnUse">
+                      <path id="light-rating-mask" d="M251.94,48.16c108.16,4.39,192.28,95.62,187.9,203.78s-95.62,192.28-203.78,187.9S43.78,344.22,48.16,236.06C52.16,137.35,128.5,58.66,224,49" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="40"/>
+                    </mask>
+                    <clipPath id="clip-path">
+                      <path d="M251.84,58.17l-.3,0-.51,0a10,10,0,0,1,1.32-19.95l.34,0Z" fill="none"/>
+                    </clipPath>
+                    <clipPath id="clip-path-2">
+                      <path d="M222.68,39.09l.34,0a10,10,0,0,1,2.45,19.84l-.44,0-.31,0Z" fill="none"/>
+                    </clipPath>
+                  </defs>
+                  <g>
+                    <circle cx="244" cy="244" r="196" fill="none" stroke="#242c47" stroke-linecap="round" stroke-linejoin="round" stroke-width="40"/>
+                    <circle cx="244" cy="244" r="239" fill="none" stroke="#2b8a3e" stroke-linecap="round" stroke-linejoin="round" stroke-width="10" style="mix-blend-mode: color-dodge"/>
+                    <g mask="url(#mask)">
+                      <g id="light-rating">
+                        <image width="430" height="434" transform="translate(33 29)" xlink:href="/src/assets/ui/Asset 631.png" style="mix-blend-mode: multiply"/>
+                        <g>
+                          <g clip-path="url(#clip-path)">
+                            <image width="43" height="24" transform="translate(211 35)" xlink:href="/src/assets/ui/Asset 632.png"/>
+                          </g>
+                          <image width="412" height="412" transform="translate(38 38)" xlink:href="/src/assets/ui/Asset 633.png"/>
+                          <g clip-path="url(#clip-path-2)">
+                            <image width="44" height="26" transform="translate(221 34)" xlink:href="/src/assets/ui/Asset 634.png"/>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="info-cell-name">Light</div>
+      </div>
+      
+      <!-- Humidity -->
+      <div class="info-cell cell-humi">
+        <div class="info-cell-visl">
+          <div class="visl-t1-wrapper">
+            <div class="visl-t1-rating">{{station?.rating(station?.evaluations.humidity)}}</div>
+            <div class="visl-t1-view before-abs before-noe">
+              <div class="visl-t1-val">{{station?.state.humidity}}%</div>
+              <div class="visl-t1-dot point-{{dot}}" *ngFor="let dot of station?.pointRange(station?.evaluations.humidity)"></div>
+            </div>
+          </div>
+        </div>
+        <div class="info-cell-name">Humi</div>
+      </div>
+    </div>
+  
+  
+  
+    <!-- ************************************************************************ -->
+    <!-- *                          Notifications Area                          * -->
+    <!-- ************************************************************************ -->
+    <hr class="ctl-separator">
+  
+    <div id="control-area">
+      <div class="ctl before-abs before-noe" [ngClass]="{'focus': ctl.equipment==focusCtl}" *ngFor="let ctl of station?.controls" (click)="onFocusCtl(ctl)">
+        <div class="ctl-icon {{ctl.type}}"></div>
+        <div class="ctl-name">{{ctl.name}}</div>
+        <div class="ctl-state " (click)="onToggleControl(ctl, $event)">
+          <img src="/src/assets/ui/{{ctl.state=='on' ? 'on-btn' : 'off-btn'}}.png">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="station-toolbar" [ngClass]="{'active': activeTool}">
+    <div class="sta-tool plant-remove">
+      <div class="tool-icon"></div>
+      <div class="tool-name">Disable</div>
+    </div>
+    <div class="sta-tool plant-add">
+      <div class="tool-icon"></div>
+      <div class="tool-name">Rename</div>
+    </div>
+    <div class="sta-tool plant-info" (click)="onSeeMore()">
+      <div class="tool-icon"></div>
+      <div class="tool-name">Detail</div>
+    </div>
+  </div>
+</ion-content>

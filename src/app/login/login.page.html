@@ -1,0 +1,13 @@
+<ion-content>
+  <div id="content-wrapper">
+    <div id="back-btn"><img (click)="onBack()" src="/src/assets/ui/login-back-btn.png"></div>
+    <div id="static-user"><img src="/src/assets/ui/login-user.png"></div>
+    <div class="btn-face-login">Face Authentication</div>
+    <div class="label-or">or</div>
+    <div class="account-input">
+      <input placeholder="username" [(ngModel)]="username" spellcheck="false">
+      <input placeholder="password" [(ngModel)]="password" type="password" spellcheck="false">
+      <div class="btn-login" (click)="onLogin()">login</div>
+    </div>
+  </div>
+</ion-content>

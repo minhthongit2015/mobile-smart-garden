@@ -1,0 +1,333 @@
+
+
+ion-content {
+  --background: var(--sg-garden-backgroud);
+  // --ion-padding: 0;
+  isolation: isolate;
+  --overflow: hidden;
+}
+
+#svg-overview {
+  padding: 18px 8px 0;
+}
+
+#svg-notifications {
+  padding: 8px 24px;
+}
+
+
+
+/*****************************************************************************
+ *                                Overview Area                              *
+ *****************************************************************************/
+
+// Hiệu ứng chạy theo đường path
+.action .scissorHalf {
+  offset-path: path('M1059.04 587.93 659.46 587.93 620.51 548.98');
+  animation: followpath 4s linear infinite;
+}
+@keyframes followpath {
+  to {
+    motion-offset: 100%;
+    offset-distance: 100%;
+  }
+}
+
+// Hiệu ứng vẽ đường nhánh từ trung tâm ra
+.path-fill {
+  stroke-dasharray: 500;
+  stroke-dashoffset: -500;
+}
+.action .path-fill {
+  animation: dash 2s linear forwards;
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+// Hiệu ứng Nút Automode đổi màu khi đẩy trồi lên
+.action .centralRise {
+  animation: centralRiseAni 2s linear forwards .5s;
+}
+@keyframes centralRiseAni {
+  from { fill: #303f62; }
+  to { fill: #3e517d; }
+}
+
+
+
+
+/*****************************************************************************
+ *                             Notification Area                             *
+ *****************************************************************************/
+
+#svg-notifications hr {
+  margin: 4px auto;
+  height: var(--sg-garden-separator-height);
+  background: var(--sg-garden-separator-color);
+}
+.noti-wrapper {
+  padding: 0 8px;
+  position: relative;
+  min-height: 36px;
+
+  & > *:nth-child(n+2) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 8px;
+    right: 8px;
+  }
+}
+
+.noti {
+  color: var(--sg-garden-noti-color);
+  font-size: var(--sg-garden-noti-font-size);
+  font-weight: var(--sg-garden-noti-font-weight);
+  font-family: var(--sg-garden-noti-font-family);
+  display: flex;
+  background: #364172;
+  transition: opacity .2s ease-in-out, transform .5s ease-in-out;
+  transform: translate3d(0%, 0%, 0);
+
+  &.viewed {
+    transform: translate3d(150%, 0%, 0);
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+.noti-icon {
+  width: 20px;
+  height: 20px;
+  margin: 8px;
+  background: url(/src/assets/ui/inform.png) center center/contain no-repeat;
+}
+.noti-msg {
+  display: flex;
+  align-items: center;
+}
+.no-noti {
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  background: transparent;
+  color: #0b152d;
+  font-weight: bold;
+  padding: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .7s ease-in-out, transform .5s ease-in-out;
+  transform: translate3d(-150%, 0%, 0);
+
+  &.view {
+    opacity: 1;
+    transform: translate3d(0%, 0%, 0);
+  }
+}
+
+
+/*****************************************************************************
+ *                               Stations Area                               *
+ *****************************************************************************/
+
+
+// Khung bọc danh sách trạm
+#stations-wrapper {
+  margin: 0 30px;
+  position: relative;
+}
+
+// Khung định vị vị trí trạm (khung vị trí động - translate)
+.station-box {
+  width: calc(33.33% - 10px);
+  height: 0;
+  padding-top: calc(33.33% - 10px);
+  margin: 0 5px 10px;
+
+  &::before {
+    content: "";
+    // background: rgba(255, 255, 255, 0.2);
+    // mix-blend-mode: overlay;
+    background: linear-gradient(to bottom, rgba(40, 50, 108, .8) 0, rgba(26, 37, 97, 0.8) 100%);
+    transition: background .3s ease-in-out;
+  }
+  &::after {
+    content: "";
+  }
+}
+.station-box.focus {
+  &::before {
+    background: linear-gradient(to bottom, #8c00d4 0, #2a85ff 100%);
+    mix-blend-mode: normal;
+    opacity: .44;
+  }
+  &::after {
+    border: 1px solid #40ffff;
+    mix-blend-mode: overlay;
+  }
+}
+
+// Khung chứa thông tin trạm
+.station {
+  display: flex;
+  flex-direction: column;
+  
+  .station-name {
+    white-space: pre-wrap;
+    text-align: center;
+    color: #40ffff;
+    padding-top: 4px;
+    font-size: var(--sg-garden-noti-font-size);
+    font-weight: var(--sg-garden-noti-font-weight);
+    font-family: var(--sg-garden-noti-font-family);
+    line-height: 17px;
+  }
+}
+
+// Khung chứa danh sách cây trồng trên trạm
+.station-plants {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
+  
+  .plant {
+    height: 100%;
+    position: relative;
+    text-align: center;
+    padding: 7% 0;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  &.column {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12% 0;
+    .plant {
+      height: 26.5%;
+      padding: 0;
+      img {
+        padding-top: 0;
+      }
+    }
+  }
+}
+
+.station-box.h3 {
+  .station-name {
+    padding-top: 10px;
+    white-space: pre-wrap;
+  }
+  .station-plants {
+    padding-top: 0;
+  }
+}
+
+
+
+/*****************************************************************************
+ *                                Toolbar Area                               *
+ *****************************************************************************/
+
+ // Thanh công cụ
+#station-toolbar {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+  background: #162966;
+  transform: translate3d(0, 100%, 0);
+  transition: 0.3s transform cubic-bezier(0.57, 0.18, 0.92, 0.71);
+
+  &.active {
+    transition: .5s transform cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: translate3d(0, 0%, 0);
+  }
+}
+
+// Nút công cụ
+.sta-tool {
+  width: 25%;
+  color: #6ae044;
+  font-family: "Quicksand";
+  text-align: center;
+
+  .tool-icon {
+    background: url(/src/assets/ui/garden-add-plant.png) center center/contain no-repeat;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+  }
+  .tool-name {
+    width: 100%;
+    white-space: pre;
+    overflow: visible;
+    font-size: 12px;
+    line-height: 12px;
+  }
+  
+  &.plant-remove {
+    color: #ea5757;
+    .tool-icon {
+      background-image: url(/src/assets/ui/garden-remove-plant.png);
+    }
+  }
+  // &.plant-add {
+  //   .tool-icon {
+  //     background-image: url(/src/assets/ui/garden-add-plant.png);
+  //   }
+  // }
+  &.plant-info {
+    color: #0b9cff;
+    .tool-icon {
+      background-image: url(/src/assets/ui/garden-info-plant.png);
+    }
+  }
+}
+
+
+/*****************************************************************************
+ *                                Toolbar Area                               *
+ *****************************************************************************/
+
+#popup-mgr-plant-wrapper {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #2d5384ed;
+  margin: 15% 5%;
+  border: 2px solid #498ec3;
+  box-shadow: 0 0 14px #000;
+}
+#popup-mgr-plant {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.popup-header {
+  text-align: center;
+  padding: 8px;
+  font-size: 21px;
+  border-bottom: 1px solid #498ec3;
+  background: #4c8dc5;
+  color: #fff;
+}
+
+#popup-mgr-plant-wrapper {
+  display: none;
+}

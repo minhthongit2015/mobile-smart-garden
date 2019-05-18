@@ -1,0 +1,279 @@
+<ion-header garden-style class="garden-header">
+    <div class="nav-btn nav-home" (click)="onHomeBtn()">
+      <img src="/src/assets/ui/home-btn.png">
+    </div>
+    <div class="nav-btn nav-logout" (click)="onLogoutBtn()">
+      <img src="/src/assets/ui/logout-btn.png">
+    </div>
+</ion-header>
+
+
+<!-- ######################################################################################### -->
+
+<ion-content garden-style [ngClass]="{'action': startAnimation}">
+
+    <!-- ************************************************************************ -->
+    <!-- *                             Overview Area                            * -->
+    <!-- ************************************************************************ -->
+    <div id="svg-overview">
+        <audio id="startup-sound" src="/src//assets/sound/open.wav" style="display: none"></audio>
+
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1063.04 713.58">
+          <defs>
+            <linearGradient id="linear-gradient" x1="33.52" y1="638.51" x2="58.57" y2="613.45" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#34cdfa"/>
+              <stop offset="1" stop-color="#e8d9f1"/>
+            </linearGradient>
+          </defs>
+          <g>
+            <g id="Layer_2" data-name="Layer 2">
+              <g id="Trang_quản_lý_vườn" data-name="Trang quản lý vườn">
+                <g id="body-overview">
+                  <g id="central">
+                    <g id="f5" opacity="0.2" style="mix-blend-mode: overlay">
+                      <circle cx="530.04" cy="356.79" r="356.79" fill="#fff"/>
+                    </g>
+                    <g id="f4" opacity="0.2" style="mix-blend-mode: overlay">
+                      <circle cx="530.04" cy="356.79" r="279.79" fill="#fff"/>
+                    </g>
+                    <g id="f3">
+                      <circle cx="530.04" cy="356.79" r="227.53" fill="#1b253e"/>
+                    </g>
+                    <g id="f2">
+                      <path d="M530,560.42a203.62,203.62,0,1,1,144-59.64A202.3,202.3,0,0,1,530,560.42Z" fill="none" stroke="#303f62" stroke-miterlimit="10" stroke-width="17"/>
+                    </g>
+                    <g id="f1-shadow" style="mix-blend-mode: multiply">
+                      <path d="M684.42,477.36C735.92,413.75,731.8,344.24,705,271l-37.81-52.46q-5.12-4.75-10.63-9.23c-86.21-69.8-211-58.61-278.67,25-66.61,82.28-53.12,204,29.52,274.41h0c1.32,1.13,2.66,2.24,4,3.35s2.73,2.18,4.11,3.24L477,544C555.24,556.17,632.2,541.85,684.42,477.36Z" fill="#476d93">
+                        <animate id="shadow-animate" fill="freeze" attributeName="d" dur="2s" to="M706.92,499.86c51.5-63.61,62-147.42,35.23-220.66l-74.92-60.66q-5.12-4.75-10.63-9.23c-86.21-69.8-211-58.61-278.67,25-66.61,82.28-53.12,204,29.52,274.41h0c1.32,1.13,2.66,2.24,4,3.35s2.73,2.18,4.11,3.24l79.62,64.46C573.41,592,654.7,564.35,706.92,499.86Z" begin="indefinite"/>
+                      </path>
+                    </g>
+                    <g id="btn-auto">
+                      <g id="f1">
+                        <circle class="centralRise" cx="530.04" cy="356.79" r="194.77" fill="#303f62"/>
+                      </g>
+                      <path id="auto-path">
+                        <animate id="auto-path-animate" attributeType="XML" attributeName="d" from="m0,0 h0" to="m0,0 h1080" dur="3s" begin="indefinite" repeatCount="1" fill="freeze"/>
+                      </path>
+                      <path id="mode-path">
+                        <animate id="mode-path-animate" attributeType="XML" attributeName="d" from="m0,97.87 h0" to="m0,97.87 h1080" dur="3s" begin="indefinite" repeatCount="1" fill="freeze"/>
+                      </path>
+                      <text font-size="2rem" font-family="latienne-pro" fill='#fdfdfd'>
+                      </text>
+                      <text transform="translate(400.71 335.41)" font-size="114.5" fill="#80aaff" stroke="#303f62" stroke-miterlimit="10" font-family="Quicksand-Regular, Quicksand">
+                          <textPath xlink:href="#auto-path">Auto</textPath>
+                          <textPath xlink:href="#mode-path"><tspan x="-32.69" y="97.87">mode</tspan></textPath>
+                        </text>
+                    </g>
+                  </g>
+                  <g id="e-equipments">
+                    <g id="temperature">
+                      <path class="path-fill" d="M1059.04 587.93 659.46 587.93 620.51 548.98" fill="none" stroke="#80aaff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                      <circle cx="620.51" cy="548.98" r="5.31" fill="#80aaff"/>
+                    </g>
+                    <text transform="translate(658.39 632.79)" font-size="40.83" fill="#80aaff" font-family="Quicksand-Light, Quicksand">Equipment: good</text>
+                    <path d="M1058,610.1v-7.42h-3.71v-2.8l1.94-3.88h-8.33l1.94,3.88v2.8H1048a2.94,2.94,0,0,0-2.55-1.49h-11.87a3,3,0,0,0-3,3h-3.71v-3h-11.13a3.72,3.72,0,0,0-3.71,3.71v.75h8.16v1.48H1012v.74a3.71,3.71,0,0,0,3.71,3.71h11.13v-3h3.71a3,3,0,0,0,3,3h.47l-2.46,7.86a5.94,5.94,0,0,0,5,9.21,6,6,0,0,0,.86-.07l1.21,6h-1l-1.49,3h-1.76V642H1058v-4.45h-1.77l-1.48-3h-1.2V629l-11-6.61,2.69-10.78h.17a3,3,0,0,0,2.55-1.48h1.9v2l-1.94,3.88h8.33l-1.94-3.88v-2Zm-44.39-5.94a2.23,2.23,0,0,1,2.1-1.48h9.64v1.48Zm11.74,5.94h-9.64a2.23,2.23,0,0,1-2.1-1.49h11.74Zm1.49-3h-5.2v-1.48h8.91v1.48Zm5.19,15.58a4.45,4.45,0,1,1,4.45,4.45A4.45,4.45,0,0,1,1032.07,622.71Zm10.26,1.23,4.9,2.94-7.94,3.67-.47-2.37A6,6,0,0,0,1042.33,623.94Zm6.33,3.8,2.58,1.55-11.2,5-.45-2.23,9.11-4.2Zm7.9,12.78h-20.78V639h20.78Zm-2-3h-16.89l.75-1.49h15.4Zm-11.62-3,9.11-4.05v4.05Zm-1.31-14.79a5.9,5.9,0,0,0-7.94-2.32l1.84-5.89h8.15Zm5.23-11.18a1.49,1.49,0,0,1-1.48,1.49h-11.87a1.49,1.49,0,0,1-1.49-1.49v-4.45a1.49,1.49,0,0,1,1.49-1.48h11.87a1.48,1.48,0,0,1,1.48,1.48Zm7-11.13-.74,1.49h-2.05l-.74-1.49Zm-2.51,3h1.49v2.23h-1.49Zm5.2,3.71v1.49h-8.17v-1.49Zm-8.17,3h8.17v1.48h-8.17Zm1.95,7.42.74-1.49h2.05l.74,1.49Zm2.51-3h-1.49V610.1h1.49ZM1026,629l1.08-1.29-2.75-2.75-1.29,1.08a5.87,5.87,0,0,0-.9-.37L1022,624h-3.88l-.15,1.68a5.87,5.87,0,0,0-.9.37l-1.29-1.08-2.75,2.75,1.08,1.29a7.14,7.14,0,0,0-.38.9l-1.67.15v3.88l1.68.15a5.87,5.87,0,0,0,.37.9l-1.08,1.29,2.75,2.75,1.29-1.08a5.87,5.87,0,0,0,.9.37l.15,1.68H1022l.15-1.68a5.87,5.87,0,0,0,.9-.37l1.29,1.08,2.75-2.75L1026,635a5.87,5.87,0,0,0,.37-.9l1.68-.15v-3.88l-1.68-.15A5.87,5.87,0,0,0,1026,629Zm.72,3.71-1.39.13-.12.46a5.18,5.18,0,0,1-.58,1.42l-.25.4.9,1.07-1,1-1.07-.9-.4.25a5.18,5.18,0,0,1-1.42.58l-.46.12-.13,1.39h-1.44l-.13-1.39-.46-.12a5.18,5.18,0,0,1-1.42-.58l-.4-.25-1.07.9-1-1,.9-1.07-.25-.4a5.54,5.54,0,0,1-.59-1.42l-.11-.46-1.39-.13v-1.44l1.39-.13.11-.46a5.54,5.54,0,0,1,.59-1.42l.25-.4-.9-1.07,1-1,1.07.9.4-.25a5.18,5.18,0,0,1,1.42-.58l.46-.12.13-1.39h1.44l.13,1.39.46.12a5.18,5.18,0,0,1,1.42.58l.4.25,1.07-.9,1,1-.9,1.07.25.4a5.18,5.18,0,0,1,.58,1.42l.12.46,1.39.13ZM1020,628a4,4,0,1,0,4,4A4,4,0,0,0,1020,628Zm0,6.67a2.67,2.67,0,1,1,2.67-2.67A2.68,2.68,0,0,1,1020,634.67Zm-.67-20.67h1.34v1.33h-1.34Zm0,2.67h1.34V618h-1.34Zm0,2.66h1.34v1.34h-1.34Z" fill="#80deff"/>
+                  </g>
+                  <g id="e-growth">
+                    <text transform="translate(768.04 531.56)" font-size="36.83" fill="#80aaff" font-family="Quicksand-Light, Quicksand">Growth: good</text>
+                    <g id="temperature-2" data-name="temperature">
+                      <path class="path-fill" d="M1062.04 481.93 763.46 481.93 724.51 442.98" fill="none" stroke="#80aaff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                      <circle cx="724.51" cy="442.98" r="5.31" fill="#80aaff"/>
+                    </g>
+                    <g>
+                      <path d="M1050.35,515a1.45,1.45,0,0,1-1.46,1.46c-1.5,0-3.4,1.29-4.39,2.13v5.18a1.46,1.46,0,0,1-2.92,0V518.4a5.58,5.58,0,0,0-4.39-2,1.46,1.46,0,0,1,0-2.92,8.52,8.52,0,0,1,4.39,1.17v-2a22.46,22.46,0,0,0-5-3.68,1.44,1.44,0,0,1-.64-2,1.46,1.46,0,0,1,2-.67,27.43,27.43,0,0,1,3.71,2.45v-2.6a1.46,1.46,0,0,1,2.92,0v2.6a24.77,24.77,0,0,1,3.74-2.45,1.46,1.46,0,0,1,1.29,2.63,23.25,23.25,0,0,0-5,3.68V515a8.83,8.83,0,0,1,4.39-1.46A1.45,1.45,0,0,1,1050.35,515Z" fill="#10bb67"/>
+                      <path d="M1043,525.21V504.75a1.44,1.44,0,0,1,1.46,1.46v2.6a24.77,24.77,0,0,1,3.74-2.45,1.46,1.46,0,0,1,1.29,2.63,23.25,23.25,0,0,0-5,3.68V515a8.83,8.83,0,0,1,4.39-1.46,1.46,1.46,0,1,1,0,2.92c-1.5,0-3.4,1.29-4.39,2.13v5.18A1.44,1.44,0,0,1,1043,525.21Z" fill="#0ca656"/>
+                      <path d="M1044,493.44a1.3,1.3,0,0,0-1-.38,1.34,1.34,0,0,0-1,.38c-.14.11-3.42,3.1-3.42,6.92s3.28,6.82,3.42,6.93a1.34,1.34,0,0,0,1,.38,1.3,1.3,0,0,0,1-.38c.15-.11,3.42-3.1,3.42-6.93S1044.15,493.55,1044,493.44Z" fill="#32d736"/>
+                      <g>
+                        <path d="M1054.73,519.36c-3.84,0-6.81-3.27-6.93-3.41a1.45,1.45,0,0,1,0-2c.12-.14,3.09-3.4,6.93-3.4s6.81,3.26,6.93,3.4a1.45,1.45,0,0,1,0,2C1061.54,516.09,1058.57,519.36,1054.73,519.36Z" fill="#10bb67"/>
+                        <path d="M1048.48,509.06a1.45,1.45,0,0,1-1-1.69c0-.18,1-4.5,4.3-6.42s7.53-.57,7.71-.51a1.45,1.45,0,0,1,1,1.69c0,.18-1,4.5-4.3,6.42A10.08,10.08,0,0,1,1048.48,509.06Z" fill="#10bb67"/>
+                      </g>
+                      <g>
+                        <path d="M1031.35,519.36c-3.84,0-6.81-3.27-6.94-3.41a1.45,1.45,0,0,1,0-2c.13-.14,3.1-3.4,6.94-3.4s6.81,3.26,6.93,3.4a1.45,1.45,0,0,1,0,2C1038.16,516.09,1035.18,519.36,1031.35,519.36Z" fill="#32d736"/>
+                        <path d="M1029.89,508.55c-3.32-1.92-4.26-6.24-4.3-6.42a1.47,1.47,0,0,1,1-1.69c.18-.06,4.39-1.4,7.72.51h0c3.32,1.92,4.26,6.24,4.3,6.42a1.47,1.47,0,0,1-1,1.69A10.08,10.08,0,0,1,1029.89,508.55Z" fill="#32d736"/>
+                      </g>
+                      <path d="M1044,507.29a1.3,1.3,0,0,1-1,.38V493.06a1.3,1.3,0,0,1,1,.38c.15.11,3.42,3.1,3.42,6.92S1044.15,507.18,1044,507.29Z" fill="#10bb67"/>
+                      <path d="M1054.73,528.33h-23.38a1.47,1.47,0,0,0-1.43,1.81l2.92,11.69a1.5,1.5,0,0,0,1.43,1.11h17.54a1.51,1.51,0,0,0,1.43-1.11l2.92-11.69A1.47,1.47,0,0,0,1054.73,528.33Z" fill="#994c0f"/>
+                      <path d="M1056.16,530.14l-2.92,11.69a1.51,1.51,0,0,1-1.43,1.11H1043V528.33h11.69A1.47,1.47,0,0,1,1056.16,530.14Z" fill="#713708"/>
+                      <path d="M1057.65,522.29h-29.23a1.45,1.45,0,0,0-1.46,1.46v3.12a4.38,4.38,0,0,0,4.39,4.38h23.38a4.38,4.38,0,0,0,4.39-4.38v-3.12A1.45,1.45,0,0,0,1057.65,522.29Z" fill="#bf6015"/>
+                      <path d="M1059.12,523.75v3.12a4.38,4.38,0,0,1-4.39,4.38H1043v-9h14.61A1.45,1.45,0,0,1,1059.12,523.75Z" fill="#994c10"/>
+                    </g>
+                  </g>
+                  <g id="e-light">
+                    <text transform="translate(763.54 218.88)" font-size="44.27" fill="#80aaff" font-family="Quicksand-Light, Quicksand">Light: good</text>
+                    <g>
+                      <path d="M1047.77,200.11c-1.88,4.16-1.83,5.06-1.83,7.06a1.93,1.93,0,0,1-1.93,1.92h-15a1.93,1.93,0,0,1-1.93-1.92c0-2,.05-2.9-1.83-7.06a15.87,15.87,0,0,1-3.81-10.37,15.06,15.06,0,1,1,30.1,0A15.87,15.87,0,0,1,1047.77,200.11Z" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                      <rect x="1027.26" y="210.44" width="18.54" height="2.96" rx="0.19" ry="0.19" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                      <rect x="1027.26" y="215.14" width="18.54" height="2.96" rx="0.19" ry="0.19" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                      <path d="M1042.57,219.71a3.2,3.2,0,0,1-3.18,3h-5.73a3.2,3.2,0,0,1-3.17-3Z" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                      <path d="M1042.57,219.71a3.2,3.2,0,0,1-3.18,3h-5.73a3.2,3.2,0,0,1-3.17-3Z" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                      <path d="M1042,184.64c-4.57.27-16.13,5.64-9.14,15.05,0,0,.27-5.65,4.3-7,0,0-3.5,4.57-4.3,13.17h2.95V200S1044.17,201.84,1042,184.64Z" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                    </g>
+                    <g id="temperature-3" data-name="temperature">
+                      <path class="path-fill" d="M1052.04 232.16 762.96 232.16 724.01 271.12" fill="none" stroke="#80aaff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                      <circle cx="724.01" cy="271.12" r="5.31" fill="#80aaff"/>
+                    </g>
+                  </g>
+                  <g id="e-wheather">
+                    <g id="temperature-4" data-name="temperature">
+                      <path class="path-fill" d="M1023.04 121 658.96 121 620.01 164.96" fill="none" stroke="#80aaff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                      <circle cx="620.01" cy="164.96" r="5.31" fill="#80aaff"/>
+                    </g>
+                    <text transform="translate(659.85 110.33)" font-size="37.8" fill="#80aaff" font-family="Quicksand-Light, Quicksand">Whea<tspan x="111.26" y="0" letter-spacing="-0.02em">t</tspan><tspan x="125.62" y="0">h</tspan><tspan x="148.8" y="0" letter-spacing="-0.02em">e</tspan><tspan x="171.03" y="0">r: good</tspan></text>
+                    <g>
+                      <path d="M1000.59,110h-21.1a7.09,7.09,0,0,1-.16-14.17,11.07,11.07,0,0,1,20.4-2.16,6.38,6.38,0,0,1,.86,0,8.19,8.19,0,0,1,0,16.38Zm-21.1-13.07a6,6,0,1,0,0,12h21.1a7.09,7.09,0,0,0,0-14.18,6.3,6.3,0,0,0-1.09.09.57.57,0,0,1-.58-.3,10,10,0,0,0-18.64,2,.57.57,0,0,1-.55.42Z" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                      <path d="M1000.59,110a.55.55,0,1,1,0-1.1,7.09,7.09,0,1,0-5.35-11.75.54.54,0,0,1-.77,0,.55.55,0,0,1-.06-.78,8.19,8.19,0,1,1,6.18,13.58Z" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                      <g>
+                        <path d="M1012.06,99.16a.54.54,0,0,1-.39-.16.56.56,0,0,1,0-.78,8.63,8.63,0,0,0-6.09-14.76,8.68,8.68,0,0,0-6.54,3,.54.54,0,0,1-.77.06.55.55,0,0,1-.06-.78A9.74,9.74,0,1,1,1012.45,99,.54.54,0,0,1,1012.06,99.16Z" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                        <path d="M1005.58,79.23a.55.55,0,0,1-.55-.55V74.55a.55.55,0,0,1,.55-.55.55.55,0,0,1,.55.55v4.13A.55.55,0,0,1,1005.58,79.23Z" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                        <path d="M1023.13,92.65H1019a.55.55,0,1,1,0-1.1h4.13a.55.55,0,0,1,0,1.1Z" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                        <path d="M1015.07,83.16a.53.53,0,0,1-.39-.16.54.54,0,0,1,0-.78l2.92-2.92a.55.55,0,1,1,.78.78L1015.45,83A.51.51,0,0,1,1015.07,83.16Z" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                        <g>
+                          <path d="M1018,105.06a.53.53,0,0,1-.39-.16l-2.92-2.92a.54.54,0,0,1,0-.78.55.55,0,0,1,.77,0l2.92,2.92a.54.54,0,0,1,0,.78A.51.51,0,0,1,1018,105.06Z" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                          <path d="M996.08,83.16a.51.51,0,0,1-.38-.16l-2.92-2.92a.54.54,0,0,1,0-.78.56.56,0,0,1,.78,0l2.91,2.92a.54.54,0,0,1,0,.78A.51.51,0,0,1,996.08,83.16Z" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                  <g id="e-nutrient">
+                    <text transform="translate(73.98 639.25)" font-size="44.27" fill="#80aaff" font-family="Quicksand-Light, Quicksand">Nutrient: good</text>
+                    <path class="path-fill" d="M22.04 588 401.12 588 440.07 549.04" fill="none" stroke="#80aaff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                    <circle cx="439.83" cy="549.49" r="5.31" fill="#80aaff"/>
+                    <g>
+                      <path d="M70,612.52a1.89,1.89,0,0,0-2-2c-1.2,0-2.4-.2-3,1a6.12,6.12,0,0,1-8.2,2.2,5.81,5.81,0,0,1-2.2-2.2,2.24,2.24,0,0,0-3.8,0,6.12,6.12,0,0,1-8.2,2.2,5.81,5.81,0,0,1-2.2-2.2c-.6-1.4-2.6-1.2-3.4,0a6.12,6.12,0,0,1-8.2,2.2c-1.6-.8-2.2-3-3.8-3.2-1.4-.2-3,.4-3,2" fill="none" stroke="#ccf2fe" stroke-miterlimit="10"/>
+                      <path d="M70,640.81a1.89,1.89,0,0,0-2-2c-1.2,0-2.4-.2-3,1a6.12,6.12,0,0,1-8.2,2.2,5.81,5.81,0,0,1-2.2-2.2,2.24,2.24,0,0,0-3.8,0,6.12,6.12,0,0,1-8.2,2.2,5.81,5.81,0,0,1-2.2-2.2c-.6-1.4-2.6-1.2-3.4,0a6.12,6.12,0,0,1-8.2,2.2c-1.6-.8-2.2-3-3.8-3.2-1.4-.2-3,.4-3,2" fill="none" stroke="#ccf2fe" stroke-miterlimit="10"/>
+                      <path d="M70,626.52a1.89,1.89,0,0,0-2-2h-1.2a2.1,2.1,0,0,0-1.8,1,6.12,6.12,0,0,1-8.2,2.2,5.81,5.81,0,0,1-2.2-2.2,2.24,2.24,0,0,0-3.8,0,6.12,6.12,0,0,1-8.2,2.2c-1.4-.8-2.2-3.2-4-3.2.6,0-.4,0-.6.2a2,2,0,0,0-1,.8,6.12,6.12,0,0,1-8.2,2.2c-1.6-.8-2.2-3-4-3.2-1.4-.2-2.8.4-2.8,2" fill="none" stroke-miterlimit="10" stroke="url(#linear-gradient)"/>
+                      <g>
+                        <circle cx="46.79" cy="619.81" r="3.83" fill="none" stroke="#67d9fb" stroke-miterlimit="10"/>
+                        <line x1="44.52" y1="619.81" x2="49.07" y2="619.81" fill="none" stroke="#67d9fb" stroke-linecap="round" stroke-linejoin="round"/>
+                      </g>
+                      <g>
+                        <circle cx="58.5" cy="634.73" r="3.83" fill="none" stroke="#67d9fb" stroke-miterlimit="10"/>
+                        <line x1="56.22" y1="634.73" x2="60.77" y2="634.73" fill="none" stroke="#67d9fb" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="58.5" y1="637.01" x2="58.5" y2="632.46" fill="none" stroke="#67d9fb" stroke-linecap="round" stroke-linejoin="round"/>
+                      </g>
+                      <g>
+                        <circle cx="39.15" cy="634.62" r="3.13" fill="none" stroke="#67d9fb" stroke-miterlimit="10"/>
+                        <line x1="37.29" y1="634.62" x2="41" y2="634.62" fill="none" stroke="#67d9fb" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="39.15" y1="636.48" x2="39.15" y2="632.77" fill="none" stroke="#67d9fb" stroke-linecap="round" stroke-linejoin="round"/>
+                      </g>
+                      <circle cx="55.75" cy="599.85" r="1.15" fill="#67d9fb"/>
+                      <circle cx="47.04" cy="605.85" r="1.71" fill="#67d9fb"/>
+                    </g>
+                  </g>
+                  <g id="e-pH">
+                    <text transform="translate(38.98 526.25)" font-size="44.27" fill="#80aaff" font-family="Quicksand-Light, Quicksand">pH: good</text>
+                    <path class="path-fill" d="M4.04 482 298.12 482 337.07 443.05" fill="none" stroke="#80aaff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                    <circle cx="336.83" cy="443.49" r="5.31" fill="#80aaff"/>
+                    <g>
+                      <path d="M25.93,495.16a.79.79,0,0,0-.79.79v3H21.67v-3a.79.79,0,0,0-1.58,0v8a.79.79,0,0,0,1.58,0v-3.42h3.47V504a.79.79,0,1,0,1.58,0v-8A.79.79,0,0,0,25.93,495.16Z" fill="#55cbff"/>
+                      <path d="M18.35,495.16H14.14a.79.79,0,0,0-.79.79v8a.79.79,0,1,0,1.58,0v-3.42h3.42a.79.79,0,0,0,.79-.79V496A.79.79,0,0,0,18.35,495.16ZM17.56,499H14.93v-2.21h2.63Z" fill="#55cbff"/>
+                      <path d="M32.25,488H7.83a.79.79,0,0,0-.79.79v5.26a.79.79,0,0,0,1.58,0v-4.47H31.46v21.16l-7.08,5.89H15.69l-7.07-5.89V497.63a.79.79,0,0,0-1.58,0v13.48a.78.78,0,0,0,.28.6l7.3,6.08v11.84a.79.79,0,0,0,.79.79h.89v6.79a.79.79,0,0,0,.79.79H23a.79.79,0,0,0,.79-.79v-6.79h.89a.79.79,0,0,0,.79-.79V517.79l7.3-6.08a.78.78,0,0,0,.28-.61V488.79A.79.79,0,0,0,32.25,488Zm-10,48.42H17.88v-6H22.2Zm1.68-7.58H16.2V518.21h7.68Z" fill="#55cbff"/>
+                      <path d="M28.88,491.79H11.2a.79.79,0,0,0-.79.79v14.74a.78.78,0,0,0,.79.78H28.88a.78.78,0,0,0,.79-.78V492.58A.79.79,0,0,0,28.88,491.79Zm-.79,14.74H12V493.37H28.09v13.16Z" fill="#55cbff"/>
+                      <path d="M16,509.05a2.69,2.69,0,1,0,2.68,2.69A2.7,2.7,0,0,0,16,509.05Zm0,3.79a1.11,1.11,0,1,1,1.1-1.1A1.11,1.11,0,0,1,16,512.84Z" fill="#55cbff"/>
+                      <path d="M24,509.05a2.69,2.69,0,1,0,2.68,2.69A2.7,2.7,0,0,0,24,509.05Zm0,3.79a1.11,1.11,0,1,1,1.1-1.1A1.11,1.11,0,0,1,24,512.84Z" fill="#55cbff"/>
+                      <path d="M21.72,522.57a.79.79,0,0,0-.79.79v2.9a.79.79,0,1,0,1.58,0v-2.9A.79.79,0,0,0,21.72,522.57Z" fill="#55cbff"/>
+                      <path d="M21.72,519.58a.79.79,0,0,0-.79.79v.83a.79.79,0,1,0,1.58,0v-.83A.79.79,0,0,0,21.72,519.58Z" fill="#55cbff"/>
+                    </g>
+                  </g>
+                  <g id="e-humi">
+                    <text transform="translate(38.98 220.25)" font-size="44.27" fill="#80aaff" font-family="Quicksand-Light, Quicksand">Humi: good</text>
+                    <path class="path-fill" d="M4.04 232 298.12 232 337.07 270.95" fill="none" stroke="#80aaff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                    <circle cx="336.83" cy="270.49" r="5.31" fill="#80aaff"/>
+                    <g>
+                      <path d="M25,208.51c0,8.53-4.61,13.89-11.52,13.89S2,217,2,208.51s11.75-24.46,11.75-24.46S25,200,25,208.51Z" fill="none" stroke="#55cbff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="4"/>
+                      <text transform="translate(5.91 216.54) scale(0.88 1)" font-size="19.65" fill="#55cbff" font-family="SegoeUI-Bold, Segoe UI" font-weight="700">%</text>
+                    </g>
+                  </g>
+                  <g id="e-temp">
+                    <text transform="translate(121.98 108.88)" font-size="44.27" fill="#80aaff" font-family="Quicksand-Light, Quicksand">Temp: good</text>
+                    <g id="temp">
+                      <g>
+                        <path d="M102.58,101.31a7.26,7.26,0,1,1-9.67-6.85c.23-.08.47-.15.71-.21V83.16a1.7,1.7,0,1,1,3.39,0V94.25l.72.21a7.28,7.28,0,0,1,4.85,6.85Z" fill="#80deff"/>
+                        <path d="M95.32,113.05a11.73,11.73,0,0,1-5.87-21.89l.43-.25V72.51a5.44,5.44,0,1,1,10.88,0v18.4l.42.25a11.73,11.73,0,0,1-5.86,21.89ZM92,92.32a9.53,9.53,0,1,0,6.55,0V72.51a3.28,3.28,0,1,0-6.55,0Z" fill="#80deff"/>
+                        <line x1="102.68" y1="73.48" x2="109.46" y2="73.48" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                        <line x1="102.68" y1="78.8" x2="109.46" y2="78.8" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                        <line x1="102.68" y1="84.13" x2="109.46" y2="84.13" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                        <line x1="104.13" y1="89.45" x2="109.46" y2="89.45" fill="none" stroke="#80deff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+                      </g>
+                    </g>
+                    <path class="path-fill" d="M80.04 126 401.04 125.84 439.83 164.96" fill="none" stroke="#80aaff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                    <circle cx="439.83" cy="165.12" r="5.31" fill="#80aaff"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+    </div>
+
+    
+    
+    <!-- ************************************************************************ -->
+    <!-- *                          Notifications Area                          * -->
+    <!-- ************************************************************************ -->
+
+    <div id="svg-notifications">
+      <hr/>
+      <div class="noti-wrapper">
+        <div class="noti" *ngFor="let noti of notifications" (click)="onConfirmNoti(noti)" [ngClass]="{'viewed': noti.viewed}">
+          <div class="noti-icon {{noti.type}}"></div>
+          <div class="noti-msg">{{noti.msg}}</div>
+        </div>
+        <div class="noti no-noti" [ngClass]="{'view': !hasNoti}">no notification yet</div>
+      </div>
+      <hr/>
+    </div>
+
+
+
+    <!-- ************************************************************************ -->
+    <!-- *                            Stations Area                             * -->
+    <!-- ************************************************************************ -->
+
+    <div id="stations-wrapper">
+      <div class="station-box abs before-abs after-abs after-noe {{station.style}}" *ngFor="let station of myGarden?.stations"
+        [ngStyle]="{'transform': station.position, 'width': station.width, 'padding-top': station.height}"
+        [ngClass]="{'focus': station.focus}">
+        <div class="station abs" (click)="onFocusStation(station, myGarden?.stations)">
+            <div class="station-name">{{station.name}}</div>
+            <div class="station-plants {{station.direction}}">
+              <div class="plant" *ngFor="let plant of station.plants">
+                <img src="/src/assets/plants/{{plant.type}}.png">
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="station-toolbar" [ngClass]="{'active': activeTool}">
+      <div class="sta-tool plant-remove">
+        <div class="tool-icon"></div>
+        <div class="tool-name">Disable</div>
+      </div>
+      <div class="sta-tool plant-add">
+        <div class="tool-icon"></div>
+        <div class="tool-name">Managing Plants</div>
+      </div>
+      <div class="sta-tool plant-info" (click)="onSeeMore()">
+        <div class="tool-icon"></div>
+        <div class="tool-name">See More</div>
+      </div>
+    </div>
+
+    <div id="popup-mgr-plant-wrapper">
+      <div id="popup-mgr-plant">
+        <div class="popup-header">Manage Plant</div>
+        <div class="popup-body">
+          <div class="cur-plants"></div>
+          <div class="btn-add-plant">+</div>
+          <div class="plant-list">
+            <div class="plant-box">
+              <div class="plant-icon"><img src="/src/assets/plants/carrot.png"></div>
+              <div class="plant-name">Carrot</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</ion-content>

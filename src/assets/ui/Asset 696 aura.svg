@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1130 1130">
+  <defs>
+    <radialGradient id="radial-gradient" cx="565" cy="565" r="565" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff0513"/>
+      <stop offset="0.42" stop-color="#fe313e"/>
+      <stop offset="0.48" stop-color="#f9303d" stop-opacity="0.98"/>
+      <stop offset="0.55" stop-color="#eb2d39" stop-opacity="0.93"/>
+      <stop offset="0.63" stop-color="#d42934" stop-opacity="0.83"/>
+      <stop offset="0.71" stop-color="#b3222c" stop-opacity="0.7"/>
+      <stop offset="0.79" stop-color="#891a21" stop-opacity="0.54"/>
+      <stop offset="0.88" stop-color="#551015" stop-opacity="0.33"/>
+      <stop offset="0.97" stop-color="#190506" stop-opacity="0.1"/>
+      <stop offset="1" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <title>Asset 70</title>
+  <g>
+    <g id="Layer_2" data-name="Layer 2">
+      <g id="Trang_cài_đặt" data-name="Trang cài đặt">
+        <g id="circle">
+          <g>
+            <circle cx="565" cy="565" r="565" fill="url(#radial-gradient)"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

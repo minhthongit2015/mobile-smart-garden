@@ -1,0 +1,97 @@
+<ion-header garden-style class="garden-header">
+  <div class="nav-btn nav-back" (click)="onBackBtn()">
+    <img src="/src/assets/ui/back-btn.png">
+  </div>
+  <div class="nav-btn nav-home" (click)="onHomeBtn()">
+    <img src="/src/assets/ui/home-btn.png">
+  </div>
+  <div class="nav-btn nav-logout" (click)="onLogoutBtn()">
+    <img src="/src/assets/ui/logout-btn.png">
+  </div>
+</ion-header>
+
+<ion-content garden-style>
+  <div id="setting-page">
+    <div id="setting-title"><img height=100% src="/src/assets/ui/setting-title.svg"></div>
+  
+    <div id="garden-list">
+        <!-- Central Aura -->
+        <div id="central-aura" [ngClass]="{'state-1': focusGarden==1, 'state-2': focusGarden==2, 'state-3': focusGarden==3}"></div>
+
+        <!-- Garden Circle -->
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 954 1256">
+            <g id="Layer_2" data-name="Layer 2">
+              <g id="Trang_cài_đặt" data-name="Trang cài đặt">
+                <g id="hr-bottom">
+                  <image width="953" height="33" transform="translate(1 1223)" xlink:href="/src/assets/ui/Asset 691.png"/>
+                  <line x1="14.5" y1="1236.5" x2="934.5" y2="1236.5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                </g>
+                <g id="hr-top">
+                  <image width="954" height="34" transform="translate(0 952)" xlink:href="/src/assets/ui/Asset 692.png"/>
+                  <line x1="14" y1="966" x2="934" y2="966" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                </g>
+                <g id="circle">
+                  <circle cx="474" cy="441" r="441" fill="#fff"/>
+                </g>
+                <g>
+                  <g>
+                    <image width="284" height="284" transform="translate(335 962)" xlink:href="/src/assets/ui/Asset 693.png" style="mix-blend-mode: screen"/>
+                    <circle cx="474" cy="1101" r="112" fill="#fff"/>
+                  </g>
+                  <text transform="translate(391.38 1096.06)" font-size="44.37" fill="#ff4d4d" font-family="Quicksand-Bold, Quicksand" font-weight="700"><tspan letter-spacing="0.01em">G</tspan><tspan x="36.56" y="0">a</tspan><tspan x="64.03" y="0" letter-spacing="-0.03em">r</tspan><tspan x="82.4" y="0" letter-spacing="-0.01em">d</tspan><tspan x="111.02" y="0" letter-spacing="0em">en</tspan><tspan x="54" y="53.25" letter-spacing="-0.01em">0</tspan><tspan x="85.06" y="53.25">2</tspan></text>
+                  <circle cx="474" cy="1101" r="112" fill="transparent" (click)="onFocusGarden(2)"/>
+                </g>
+                <g>
+                  <g>
+                    <image width="284" height="284" transform="translate(664 962)" xlink:href="/src/assets/ui/Asset 694.png" style="mix-blend-mode: screen"/>
+                    <circle cx="803" cy="1101" r="112" fill="#fff"/>
+                  </g>
+                  <text transform="translate(720.38 1096.06)" font-size="44.37" fill="#ff4d4d" font-family="Quicksand-Bold, Quicksand" font-weight="700"><tspan letter-spacing="0.01em">G</tspan><tspan x="36.56" y="0">a</tspan><tspan x="64.03" y="0" letter-spacing="-0.03em">r</tspan><tspan x="82.4" y="0" letter-spacing="-0.01em">d</tspan><tspan x="111.02" y="0" letter-spacing="0em">en</tspan><tspan letter-spacing="-0.01em"><tspan x="53.56" y="53.25">0</tspan><tspan x="84.62" y="53.25" letter-spacing="0em">3</tspan></tspan></text>
+                  <circle cx="803" cy="1101" r="112" fill="transparent" (click)="onFocusGarden(3)"/>
+                </g>
+                <g>
+                  <g>
+                    <image width="284" height="284" transform="translate(6 962)" xlink:href="/src/assets/ui/Asset 695.png" style="mix-blend-mode: screen"/>
+                    <circle cx="145" cy="1101" r="112" fill="#fff"/>
+                  </g>
+                  <text transform="translate(62.38 1096.06)" font-size="44.37" fill="#ff4d4d" font-family="Quicksand-Bold, Quicksand" font-weight="700"><tspan letter-spacing="0.01em">G</tspan><tspan x="36.56" y="0">a</tspan><tspan x="64.03" y="0" letter-spacing="-0.03em">r</tspan><tspan x="82.4" y="0" letter-spacing="-0.01em">d</tspan><tspan x="111.02" y="0" letter-spacing="0em">en</tspan><tspan letter-spacing="0em"><tspan x="59.54" y="53.25">0</tspan><tspan x="90.83" y="53.25" letter-spacing="0em">1</tspan></tspan></text>
+                  <circle cx="145" cy="1101" r="112" fill="transparent" (click)="onFocusGarden(1)"/>
+                </g>
+                <polygon id="light-g1" points="33 441 33 1101 218.19 1185.78 760.42 776.33 33 441"  class="light" [ngClass]="{'show': focusGarden==1}"/>
+                <polygon id="light-g3" points="915 441 915 1101 729.81 1185.78 187.58 776.33 915 441" class="light" [ngClass]="{'show': focusGarden==3}"/>
+                <polygon id="light-g2" points="861.17 651.89 570.88 1156.6 377.18 1157.5 85.79 651.33 861.17 651.89" class="light" [ngClass]="{'show': focusGarden==2}"/>
+              </g>
+            </g>
+        </svg>
+
+        <!-- Garden detail -->
+        <div id="garden-detail" [ngClass]="{'view': curGarden != null}">
+          <div class="garden-name">{{curGarden?.name}}</div>
+          <div class="info">
+            <div class="info-cell"><img src="/src/assets/ui/li.png">
+              <div>Protected: {{curGarden?.protected}}</div></div>
+            <div class="info-cell" (click)="onEditGardenInfo(curGarden, 'localIP')"><img src="/src/assets/ui/li.png">
+              <div>Local IP: {{curGarden?.localIP}}</div></div>
+            <div class="info-cell"><img src="/src/assets/ui/li.png">
+              <div>Location: {{curGarden?.location}}</div></div>
+          </div>
+          <div class="connect-btn" (click)="onConnectGarden()">Connect To Garden</div>
+        </div>
+    </div>
+
+    <div id="station-toolbar" [ngClass]="{'active': activeTool}">
+      <div class="sta-tool plant-remove">
+        <div class="tool-icon"></div>
+        <div class="tool-name">Disable</div>
+      </div>
+      <div class="sta-tool plant-add">
+        <div class="tool-icon"></div>
+        <div class="tool-name">Rename</div>
+      </div>
+      <div class="sta-tool plant-info" (click)="onLeaveGarden()">
+        <div class="tool-icon"></div>
+        <div class="tool-name">Leave</div>
+      </div>
+    </div>
+  </div>
+</ion-content>

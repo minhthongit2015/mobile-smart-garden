@@ -1,0 +1,72 @@
+
+/*****************************************************************************
+ *                                Layout Fixes                               *
+ *****************************************************************************/
+
+ion-header {
+  margin-bottom: -4px;
+  
+  &::after {
+    display: none !important;
+  }
+}
+.abs {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+}
+.before-abs::before, .after-abs::after {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+}
+.noe, .before-noe::before, .after-noe::after {
+  pointer-events: none;
+}
+
+/* ------------------- */
+
+
+
+.garden-header {
+  display: flex;
+  min-height: 50px;
+  background: #303f62;
+  justify-content: space-between;
+  padding: 6px 8px 2px;
+  align-items: baseline;
+
+  .nav-btn {
+    img {
+      height: 44px;
+      width: auto;
+    }
+    &.nav-home {
+      img {
+        height: 38px;
+      }
+    }
+  }
+}
+
+:root {
+  --sg-garden-backgroud: url(/src/assets/ui/garden-bg.png) center center/100% 100% no-repeat;
+}
+
+[garden-style] {
+
+  // Separator
+  --sg-garden-separator-height: 2px;
+  --sg-garden-separator-color: #1b253e;
+
+  // Inform
+  --sg-garden-noti-color: #16d3f2;
+  --sg-garden-noti-font-size: 15px;
+  --sg-garden-noti-font-weight: lighter;
+  --sg-garden-noti-font-family: "Open Sans";
+
+}

@@ -1,0 +1,14 @@
+
+# Cài rxjs tương thích với ng-socket-io
+npm install --save rxjs-compat
+
+# Cài socket.io-client
+npm install --save ng-socket-io
+
+# Fix lỗi: https://github.com/socketio/socket.io-client/issues/new
+(window as any).global = window;
+
+//tsconfig.app.json
+  "path": {
+    "socket.io-client": ["../node_modules/socket.io-client/dist/socket.io.slim.js"]
+  }
