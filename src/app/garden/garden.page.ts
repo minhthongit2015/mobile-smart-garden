@@ -6,6 +6,7 @@ import { SmartGarden, Station, UserPlant } from '../+shared/model/garden';
 import { SGNotification } from '../+shared/model/notification';
 import { Router } from '@angular/router';
 import { ConnectionManager } from '../+shared/smart-garden-connection';
+import { WS_EVENTS } from '../constants';
 
 @Component({
   selector: 'app-garden',
@@ -106,7 +107,9 @@ export class GardenPage implements OnInit {
     // this.conn.socket.removeListener("GardenEvent", this.onGardenEvent);
     this.conn.socket.removeAllListeners("GardenEvent");
     this.attachGardenEvent = false;
-    this.conn.leaveRoom(localStorage['ConnectedGarden'], (rs) => {
+    this.conn.wsSend(WS_EVENTS.mobile2Cloud, "leave", {
+      gardens: []
+    }, (rs) => {
       console.log(rs);
     });
     for (let i=0; i<2000; i++) clearTimeout(i);
@@ -125,11 +128,13 @@ export class GardenPage implements OnInit {
   attachGardenEvent: boolean = false;
   setupDataChannel(type) {
     if (type==1 || type==3) {
-      this.conn.joinToRoom(localStorage['ConnectedGarden'], (rs) => {
+      this.conn.wsSend(WS_EVENTS.mobile2Cloud, "watch", {
+        gardens: [+localStorage['ConnectedGarden']]
+      }, (rs) => {
         // [Sự kiện]: Dữ liệu từ vườn gửi đến các app đang kết nối
         if (!this.attachGardenEvent) {
           this.attachGardenEvent = true;
-          this.conn.wsOn("GardenEvent", (data) => this.onGardenEvent(data));
+          this.conn.wsOn(WS_EVENTS.garden2Mobile, (data) => this.onGardenEvent(data));
         }
       });
     }

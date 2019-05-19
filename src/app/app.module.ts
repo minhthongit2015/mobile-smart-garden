@@ -12,13 +12,15 @@ import { AppRoutingModule } from './app-routing.module';
 /** My Include */
 import { ConnectionService } from './services/connection.service';
 import { AuthModule } from  './modules/auth/auth.module';
+import { GardenInfoModule } from './modules/garden-info/garden-info.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-    AuthModule
+    AuthModule,
+    GardenInfoModule
   ],
   providers: [
     StatusBar,

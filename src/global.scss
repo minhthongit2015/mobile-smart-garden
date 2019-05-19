@@ -11,3 +11,8 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 @import "./theme/modern_dark.scss";
+
+.default-button {
+  background: var(--ion-color-primary) !important;
+  color: #fff !important;
+}

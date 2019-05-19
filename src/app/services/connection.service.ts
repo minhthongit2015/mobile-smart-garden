@@ -8,20 +8,24 @@ const io = require('socket.io-client');
   providedIn: 'root'
 })
 export class ConnectionService {
-  wsServer: String = "ws://insys-cloud-websocket-server.herokuapp.com:80";
-  ws: any; // alias for socket
+  // wsServer: String = "ws://insys-cloud-websocket-server.herokuapp.com:80";
+  wsServer: String = "ws://localhost:5000";
   socket: any;
 
   localSocket: SmartGardenWebSocket; // Socket for connect to local garden
 
   get wsConnected() { return this.socket.connected };
+  get ws() { return this.socket }
 
   constructor() {
     // this.wsServer = "ws://localhost:80";
-    this.socket = io(this.wsServer);
-    
-    this.ws = this.socket;
-    // this.socket.connect();
+    this.socket = io(this.wsServer, {
+      transports: ["websocket"],
+      reconnection: true,
+      reconnectionDelay: 1000,
+      reconnectionDelayMax : 5000,
+      reconnectionAttempts: Infinity
+    });
 
     this.socket.on("connect", () => {
       this.socket.emit("AppConnect", () => {

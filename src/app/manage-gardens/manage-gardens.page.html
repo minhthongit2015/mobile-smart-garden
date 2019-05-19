@@ -68,10 +68,10 @@
         <div id="garden-detail" [ngClass]="{'view': curGarden != null}">
           <div class="garden-name">{{curGarden?.name}}</div>
           <div class="info">
-            <div class="info-cell"><img src="/src/assets/ui/li.png">
-              <div>Protected: {{curGarden?.protected}}</div></div>
-            <div class="info-cell" (click)="onEditGardenInfo(curGarden, 'localIP')"><img src="/src/assets/ui/li.png">
-              <div>Local IP: {{curGarden?.localIP}}</div></div>
+            <!-- <div class="info-cell"><img src="/src/assets/ui/li.png">
+              <div>Protected: {{curGarden?.protected}}</div></div> -->
+            <div class="info-cell" (click)="onEditGardenInfo(curGarden, 'local_ip')"><img src="/src/assets/ui/li.png">
+              <div>Local IP: {{curGarden?.local_ip}}</div></div>
             <div class="info-cell"><img src="/src/assets/ui/li.png">
               <div>Location: {{curGarden?.location}}</div></div>
           </div>

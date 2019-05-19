@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnectionService } from '../services/connection.service';
-import { NavController, AlertController } from '@ionic/angular';
+import { NavController, AlertController, LoadingController } from '@ionic/angular';
 import { AuthService } from '../modules/auth/auth.service';
 
 @Component({
@@ -13,8 +13,11 @@ export class LoginPage implements OnInit {
   password: string = "sunday123";
   ssid: string;
 
-  constructor(public navCtrl: NavController, private conn: ConnectionService,
-    public alert: AlertController, private  authService:  AuthService) {
+  constructor(public navCtrl: NavController,
+    private conn: ConnectionService,
+    public alert: AlertController,
+    public loadingController: LoadingController,
+    private authService:  AuthService) {
   }
 
   onBack() {
@@ -22,25 +25,39 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Login construct");
-    this.ssid = localStorage["ssid"];
-    // if (this.ssid) {
-    //   this.navCtl.navigateForward('/home');
-    // }
-    // else {
-    //   this.conn.wsSend('UserAppConnect', { uname: this.username, pwd: this.password, ssid: this.ssid }, (rs) => {
-    //     this.ssid = rs;
-    //     if (rs) {
-    //       this.navCtl.navigateForward('/home');
-    //       localStorage["ssid"] = this.ssid;
-    //     }
-    //   });
-    // }
+
+  }
+
+  ionViewDidEnter() {
+    this.authService.isLoggedIn().subscribe(async (isLogged) => {
+      if (isLogged) {
+        let alert3 = await this.alert.create({
+          header: "You are Already Signed in!",
+          message: "You could go back or continue to sign in with another account.",
+          buttons: [
+            { text: "Sign in to Another Account" },
+            {
+              text: "OK, Get me back",
+              cssClass: 'default-button',
+              handler: () => {
+                this.navCtrl.goBack();
+              }
+            }]
+        });
+        await alert3.present();
+      }
+    }).unsubscribe();
   }
   
-  login(form) {
+  async login() {
+    const loading = await this.loadingController.create({
+      message: 'Please wait...'
+    });
+    await loading.present();
+
     this.authService.login({ username: this.username, password: this.password }).subscribe(async (res) => {
-      if (!res) {
+      loading.dismiss();
+      if (!res || !res.user) {
         let alert3 = await this.alert.create({
           header: "Login Failed!",
           message: "Wrong username or password. Please try again.",
@@ -48,8 +65,28 @@ export class LoginPage implements OnInit {
         });
         await alert3.present();
       } else {
-        this.navCtrl.navigateForward('/home');
+        let alert3 = await this.alert.create({
+          header: "Welcome To Your Smart Garden!",
+          message: `Hello ${res.user.name}. Welcome back ٩(^-^)۶`,
+          buttons: [
+            {
+              text: "OK, Get me back",
+              handler: () => {
+                this.navCtrl.goBack();
+              }
+            }
+          ]
+        });
+        await alert3.present();
       }
+    }, async (error) => {
+      loading.dismiss();
+      let alert3 = await this.alert.create({
+        header: "Login Error!",
+        message: `Something went wrong!<br>"${error.message}"`,
+        buttons: ["OK"]
+      });
+      await alert3.present();
     });
   }
 
