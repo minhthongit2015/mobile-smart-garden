@@ -3,11 +3,11 @@ import { NavController, AlertController } from '@ionic/angular';
 import { ConnectionService } from '../services/connection.service';
 
 @Component({
-  selector: 'app-setting',
-  templateUrl: './setting.page.html',
-  styleUrls: ['./setting.page.scss'],
+  selector: 'app-manage-gardens',
+  templateUrl: './manage-gardens.page.html',
+  styleUrls: ['./manage-gardens.page.scss'],
 })
-export class SettingPage implements OnInit {
+export class ManageGardensPage implements OnInit {
   gardenList = [];
   curGarden;
 

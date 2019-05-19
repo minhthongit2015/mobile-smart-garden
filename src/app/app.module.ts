@@ -11,13 +11,14 @@ import { AppRoutingModule } from './app-routing.module';
 
 /** My Include */
 import { ConnectionService } from './services/connection.service';
-
+import { AuthModule } from  './modules/auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+    AuthModule
   ],
   providers: [
     StatusBar,

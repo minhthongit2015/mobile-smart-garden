@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnectionService } from '../services/connection.service';
 import { NavController, AlertController } from '@ionic/angular';
+import { AuthService } from '../modules/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,12 @@ import { NavController, AlertController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  username: string = "lucy1412";
-  password: string = "LuckyDayzzz";
+  username: string = "thongnmtran";
+  password: string = "sunday123";
   ssid: string;
 
   constructor(public navCtrl: NavController, private conn: ConnectionService,
-    public alert: AlertController) {
+    public alert: AlertController, private  authService:  AuthService) {
   }
 
   onBack() {
@@ -36,19 +37,18 @@ export class LoginPage implements OnInit {
     //   });
     // }
   }
-
-  onLogin() {
-    this.conn.wsSend('UserAppConnect', { uname: this.username, pwd: this.password }, async (rs) => {
-      if (rs) {
-        this.navCtrl.navigateForward('/home');
-        localStorage["ssid"] = rs;
-      } else {
+  
+  login(form) {
+    this.authService.login({ username: this.username, password: this.password }).subscribe(async (res) => {
+      if (!res) {
         let alert3 = await this.alert.create({
           header: "Login Failed!",
           message: "Wrong username or password. Please try again.",
           buttons: ["OK"]
         });
         await alert3.present();
+      } else {
+        this.navCtrl.navigateForward('/home');
       }
     });
   }

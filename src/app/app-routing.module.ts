@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'garden', loadChildren: './garden/garden.module#GardenPageModule' },
   { path: 'garden-detail/:id', loadChildren: './garden-detail/garden-detail.module#GardenDetailPageModule' , pathMatch: 'prefix'},
-  { path: 'setting', loadChildren: './setting/setting.module#SettingPageModule' },
+  { path: 'manage-gardens', loadChildren: './manage-gardens/manage-gardens.module#ManageGardensPageModule' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
