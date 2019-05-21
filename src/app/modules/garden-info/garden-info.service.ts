@@ -5,12 +5,13 @@ import { Observable, BehaviorSubject } from  'rxjs';
 import { Storage } from  '@ionic/storage';
 import { GardenInfo } from  './garden-info';
 import { AuthService } from '../auth/auth.service';
+import { Config } from '../../constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GardenInfoService {
-  SERVER_ADDRESS: string = 'http://localhost:5000/apis/garden';
+  SERVER_ADDRESS: string = Config.GardenEndpoint;
   private gardens = new BehaviorSubject([]);
 
   constructor(private  httpClient: HttpClient,

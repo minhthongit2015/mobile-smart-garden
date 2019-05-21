@@ -10,11 +10,14 @@ import { AuthService } from '../modules/auth/auth.service';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private conn: ConnectionService, private authService:  AuthService) {
+  constructor(
+    public navCtrl: NavController,
+    private conn: ConnectionService,
+    private authService: AuthService
+    ) {
   }
 
   ngOnInit() {
-    this.conn.wsSend("chat message", "I'm KID");
   }
 
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SmartGardenWebSocket } from '../modules/sgwebsocket';
+import { Config } from '../constants';
 // import { Socket, SocketIoConfig } from 'ng-socket-io';
 // import io from 'socket.io-client';
 const io = require('socket.io-client');
@@ -9,7 +10,8 @@ const io = require('socket.io-client');
 })
 export class ConnectionService {
   // wsServer: String = "ws://insys-cloud-websocket-server.herokuapp.com:80";
-  wsServer: String = "ws://localhost:5000";
+  // wsServer: String = "ws://localhost:5000";
+  wsServer: String = Config.wsEndPoint;
   socket: any;
 
   localSocket: SmartGardenWebSocket; // Socket for connect to local garden
@@ -18,7 +20,22 @@ export class ConnectionService {
   get ws() { return this.socket }
 
   constructor() {
-    // this.wsServer = "ws://localhost:80";
+    // this.socket = io(this.wsServer, {
+    //   transports: ["websocket"],
+    //   reconnection: true,
+    //   reconnectionDelay: 1000,
+    //   reconnectionDelayMax : 5000,
+    //   reconnectionAttempts: Infinity
+    // });
+
+    // this.socket.on("connect", () => {
+    //   this.socket.emit("AppConnect", () => {
+    //     console.log("App Connected!");
+    //   })
+    // });
+  }
+
+  connect() {
     this.socket = io(this.wsServer, {
       transports: ["websocket"],
       reconnection: true,
@@ -26,12 +43,10 @@ export class ConnectionService {
       reconnectionDelayMax : 5000,
       reconnectionAttempts: Infinity
     });
+  }
 
-    this.socket.on("connect", () => {
-      this.socket.emit("AppConnect", () => {
-        console.log("App Connected!");
-      })
-    });
+  disconnect() {
+    this.socket.disconnect();
   }
 
   wsOn(event, callback) {

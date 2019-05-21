@@ -20,7 +20,10 @@ export class GardenPage implements OnInit {
 
   constructor(private router: Router, private conn: ConnectionService, private navCtrl: NavController) {
     this.gardenProto = new ConnectionManager();
+    this.conn.connect();
     this.conn.wsOn("connect", () => {
+      debugger
+      console.log(this.conn);
       this.setupDataChannel(1);
     });
   }
@@ -74,11 +77,11 @@ export class GardenPage implements OnInit {
       this.setupDataChannel(1);
     }
 
-    this.conn.setupConnectToLocalGarden(this.myGarden.localIP);
-    this.conn.localSocket.attachEventListeners({
-      message: (e) => this.onLocalGardenEvent(e),
-      open: (e) => this.setupDataChannel(2)
-    });
+    // this.conn.setupConnectToLocalGarden(this.myGarden.localIP);
+    // this.conn.localSocket.attachEventListeners({
+    //   message: (e) => this.onLocalGardenEvent(e),
+    //   open: (e) => this.setupDataChannel(2)
+    // });
   }
 
   startAnimation: boolean = false;
