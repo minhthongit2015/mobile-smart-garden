@@ -153,7 +153,7 @@ export class ManageGardensPage implements OnInit {
       const { isAccessible, isOnline } = rs;
       if (isAccessible) {
         let alert3 = await this.alert.create({
-          header: isOnline ? "Succeed!" : "Garden Offline!",
+          header: isOnline ? "Garden Online!" : "Garden Offline!",
           message: isOnline ? "Connection to your garden is established! Your garden is online now." : "Connection to your garden is setting up. But your garden is not online now.",
           buttons: [
             {
@@ -254,7 +254,7 @@ export class ManageGardensPage implements OnInit {
           handler: (inputs) => {
             garden[prop] = inputs[prop];
             this.curGarden = this.curGarden;
-            if (prop == "localIP") {
+            if (prop == "local_ip") {
               this.conn.updateLocalIP(garden.local_ip);
             }
             this.saveGardenList();

@@ -26,10 +26,10 @@ export const WS_EVENTS = {
 };
 
 export const Config = {
-  // AuthEndpoint: 'http://localhost:5000/apis/auth',
-  // GardenEndpoint: 'http://localhost:5000/apis/garden',
-  AuthEndpoint: 'https://cloud-smart-garden.herokuapp.com/apis/auth',
-  GardenEndpoint: 'https://cloud-smart-garden.herokuapp.com/apis/garden',
+  AuthEndpoint: 'http://localhost:5000/apis/auth',
+  GardenEndpoint: 'http://localhost:5000/apis/garden',
+  // AuthEndpoint: 'https://cloud-smart-garden.herokuapp.com/apis/auth',
+  // GardenEndpoint: 'https://cloud-smart-garden.herokuapp.com/apis/garden',
   wsEndPoint: "ws://localhost:5000"
 }
 

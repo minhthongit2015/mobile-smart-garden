@@ -22,8 +22,6 @@ export class GardenPage implements OnInit {
     this.gardenProto = new ConnectionManager();
     this.conn.connect();
     this.conn.wsOn("connect", () => {
-      debugger
-      console.log(this.conn);
       this.setupDataChannel(1);
     });
   }
