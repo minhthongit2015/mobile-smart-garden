@@ -20,25 +20,18 @@ export class GardenPage implements OnInit {
 
   constructor(private router: Router, private conn: ConnectionService, private navCtrl: NavController) {
     this.gardenProto = new ConnectionManager();
-    this.conn.connect();
-    this.conn.wsOn("connect", () => {
-      this.setupDataChannel(1);
-    });
+    if (!this.conn.wsConnected) {
+      this.conn.connect();
+      this.conn.wsOn("connect", () => {
+        this.setupDataChannel(1);
+      });
+    }
   }
   onBackBtn() { this.navCtrl.goBack(true); }
   onHomeBtn() { this.navCtrl.navigateRoot('/home', true); }
   onLogoutBtn() { this.navCtrl.navigateRoot('/login', true); }
 
   ngOnInit() {
-    this.notifications = [
-      new SGNotification('Thu hoạch dâu tây sau 1 ngày nữa', 'inform'),
-      new SGNotification('Sự kiện ẩm thực! Bạn muốn tham gia?', 'inform'),
-      new SGNotification('Thời tiết đẹp, khí trời mát mẻ!', 'inform')
-    ];
-    this.notifications.reverse();
-    this.hasNoti = true;
-
-    this.initGardenState();
   }
 
   initGardenState() {
@@ -51,29 +44,54 @@ export class GardenPage implements OnInit {
 
     // Chuẩn hóa dữ liệu thành đối tượng SmartGarden + Nạp dữ liệu mẫu
     this.myGarden = new SmartGarden(curGarden, [
-      new Station({ name: "Giàn sân thượng 01", id: "A1", plants: [
+      new Station({ name: "Giàn sân thượng 01", id: "A1-01", plants: [
         new UserPlant("tomato")
-      ], equipments: [], automation_mode: true, state: {}, evaluations: {}, style: 'b1', position: [0,0] }),
-      new Station({ name: "Giàn sân thượng 02", id: "A2", plants: [
+      ], equipments: [
+        { name: "Bơm 01", role: "pump", state: true },
+        { name: "Phun Sương 01", role: "misting", state: false },
+        { name: "Đèn Quang Hợp 01", role: "led", state: true },
+      ], automation_mode: true, state: { }, evaluations: {}, style: 'b1', position: [0,0] }),
+      new Station({ name: "Giàn sân thượng 02", id: "A1-01", plants: [
         new UserPlant("carrot")
-      ], equipments: [], automation_mode: true, state: {}, evaluations: {}, style: 'b1', position: [0,1] }),
-      new Station({ name: "Giàn sân thượng 03", id: "A3", plants: [
+      ], equipments: [
+        { name: "Bơm 02", role: "pump", state: false },
+        { name: "Phun Sương 02", role: "misting", state: true },
+        { name: "Đèn Quang Hợp 02", role: "led", state: true },
+      ], automation_mode: true, state: { }, evaluations: {}, style: 'b1', position: [0,1] }),
+      new Station({ name: "Giàn sân thượng 03", id: "A1-01", plants: [
         new UserPlant("carrot"),
         new UserPlant("carrot"),
         new UserPlant("carrot")
-      ], equipments: [], automation_mode: true, state: {}, evaluations: {}, style: 'v3', position: [0,2] }),
-      new Station({ name: "Giàn ban công 01", id: "A4", plants: [
+      ], equipments: [
+        { name: "Bơm 03", role: "pump", state: true },
+        { name: "Phun Sương 03", role: "misting", state: false },
+        { name: "Đèn Quang Hợp 03", role: "led", state: false },
+      ], automation_mode: true, state: { }, evaluations: {}, style: 'v3', position: [0,2] }),
+      new Station({ name: "Giàn ban công 01", id: "A1-01", plants: [
         new UserPlant("strawberry"),
         new UserPlant("strawberry"),
         new UserPlant("strawberry")
-      ], equipments: [], automation_mode: true, state: {}, evaluations: {}, style: 'h3', position: [1,0] })
+      ], equipments: [
+        { name: "Bơm 04", role: "pump", state: false },
+        { name: "Phun Sương 04", role: "misting", state: true },
+        { name: "Đèn Quang Hợp 04", role: "led", state: false },
+      ], automation_mode: true, state: { }, evaluations: {}, style: 'h3', position: [1,0] })
     ]);
   }
 
   ionViewDidEnter() {
-    if (this.conn.wsConnected) {
-      this.setupDataChannel(1);
-    }
+    this.notifications = [
+      new SGNotification('Thu hoạch dâu tây sau 1 ngày nữa', 'inform'),
+      new SGNotification('Sự kiện ẩm thực! Bạn muốn tham gia?', 'inform'),
+      new SGNotification('Thời tiết đẹp, khí trời mát mẻ!', 'inform')
+    ];
+    this.notifications.reverse();
+    this.hasNoti = true;
+
+    this.initGardenState();
+    // if (this.conn.wsConnected) {
+    //   this.setupDataChannel(1);
+    // }
 
     // this.conn.setupConnectToLocalGarden(this.myGarden.localIP);
     // this.conn.localSocket.attachEventListeners({
@@ -106,7 +124,7 @@ export class GardenPage implements OnInit {
 
   ionViewWillLeave() {
     // this.conn.socket.removeListener("GardenEvent", this.onGardenEvent);
-    this.conn.socket.removeAllListeners("GardenEvent");
+    // this.conn.socket.removeAllListeners("GardenEvent");
     this.attachGardenEvent = false;
     this.conn.wsSend(WS_EVENTS.mobile2Cloud, "leave", {
       gardens: []
@@ -114,10 +132,11 @@ export class GardenPage implements OnInit {
       console.log(rs);
     });
     for (let i=0; i<2000; i++) clearTimeout(i);
+    this.conn.disconnect();
 
-    this.conn.localSocket.clearListener("message");
-    this.conn.localSocket.clearListener("open");
-    this.conn.localSocket.close();
+    // this.conn.localSocket.clearListener("message");
+    // this.conn.localSocket.clearListener("open");
+    // this.conn.localSocket.close();
   }
 
 
@@ -140,7 +159,7 @@ export class GardenPage implements OnInit {
       });
     }
     if (type==2 || type==3) {
-      this.conn.localSocket.send(this.gardenProto.buildPackage([2,1], ''));
+      // this.conn.localSocket.send(this.gardenProto.buildPackage([2,1], ''));
     }
   }
 

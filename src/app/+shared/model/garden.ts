@@ -77,7 +77,7 @@ export class Station {
           controls.push({
             type: role,
             name: equipment.name,
-            state: equipment.state[role] || "off",
+            state: equipment.state[role] === true ? "on" : "off",
             focus: equipment.focus,
             equipment: equipment
           })

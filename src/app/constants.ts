@@ -14,23 +14,28 @@ export const WS_EVENTS = {
 
   mobileConnect: 'mobileConnect',
   mobile2Cloud: 'mobile2cloud',
-  mobile2Garden: 'mobile2cloud',
+  mobile2Garden: 'mobile2garden',
+
+  AIMLModelsChanged: 'AIMLModelsChanged',
   
   // Command send to stations in the local garden
   command: 'command',
 
   // Station <-> Garden
   stationConnect: 'stationConnect',
+  stationAccepted: 'stationAccepted',
+  stationState: 'stationState',
   station2Garden: 'station2garden',
   garden2Station: 'garden2station'
 };
 
 export const Config = {
-  AuthEndpoint: 'http://localhost:5000/apis/auth',
-  GardenEndpoint: 'http://localhost:5000/apis/garden',
-  // AuthEndpoint: 'https://cloud-smart-garden.herokuapp.com/apis/auth',
-  // GardenEndpoint: 'https://cloud-smart-garden.herokuapp.com/apis/garden',
-  wsEndPoint: "ws://localhost:5000"
+  // AuthEndpoint: 'http://localhost:5000/apis/auth',
+  // GardenEndpoint: 'http://localhost:5000/apis/garden',
+  // wsEndPoint: "ws://localhost:5000",
+  AuthEndpoint: 'https://cloud-smart-garden.herokuapp.com/apis/auth',
+  GardenEndpoint: 'https://cloud-smart-garden.herokuapp.com/apis/garden',
+  wsEndPoint: "ws://cloud-smart-garden.herokuapp.com"
 }
 
 

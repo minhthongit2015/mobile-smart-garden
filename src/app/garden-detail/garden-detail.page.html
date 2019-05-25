@@ -128,11 +128,12 @@
     <hr class="ctl-separator">
   
     <div id="control-area">
-      <div class="ctl before-abs before-noe" [ngClass]="{'focus': ctl.equipment==focusCtl}" *ngFor="let ctl of station?.controls" (click)="onFocusCtl(ctl)">
-        <div class="ctl-icon {{ctl.type}}"></div>
+      <div class="ctl before-abs before-noe" [ngClass]="{'focus': ctl == focusCtl}"
+          *ngFor="let ctl of station?.equipments" (click)="onFocusCtl(ctl)">
+        <div class="ctl-icon {{ctl.role}}"></div>
         <div class="ctl-name">{{ctl.name}}</div>
         <div class="ctl-state " (click)="onToggleControl(ctl, $event)">
-          <img src="/src/assets/ui/{{ctl.state=='on' ? 'on-btn' : 'off-btn'}}.png">
+          <img src="/src/assets/ui/{{ctl.state ? 'on-btn' : 'off-btn'}}.png">
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ export class ConnectionService {
 
   localSocket: SmartGardenWebSocket; // Socket for connect to local garden
 
-  get wsConnected() { return this.socket.connected };
+  get wsConnected() { return this.socket ? this.socket.connected : false };
   get ws() { return this.socket }
 
   constructor() {

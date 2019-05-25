@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { StationDetail, Station, SmartGarden } from '../+shared/model/garden';
 import { ConnectionService } from '../services/connection.service';
 import { ConnectionManager } from '../+shared/smart-garden-connection';
+import { WS_EVENTS } from '../constants';
 
 @Component({
   selector: 'app-garden-detail',
@@ -17,16 +18,10 @@ export class GardenDetailPage implements OnInit {
   gardenProto: ConnectionManager;
   curGarden: SmartGarden;
 
-  constructor(private route: ActivatedRoute, private router: Router, private navCtrl: NavController,
-    private conn: ConnectionService) {
-    this.gardenProto = new ConnectionManager();
-    this.conn.wsOn("connect", () => {
-      this.setupDataChannel(1);
-    });
-
-    this.loadCurrentGarden();
-    
-    this.station = new Station(JSON.parse(localStorage["currentStation"]));
+  constructor(private route: ActivatedRoute,
+      private router: Router,
+      private navCtrl: NavController,
+      private conn: ConnectionService) {
   }
   onBackBtn() { this.navCtrl.goBack(true); }
   onHomeBtn() { this.navCtrl.navigateRoot('/home', true); }
@@ -40,34 +35,41 @@ export class GardenDetailPage implements OnInit {
     let localGarden = localStorage["currentGarden"];
     try { localGarden = JSON.parse(localGarden);
     } catch (err) { localGarden = null; }
-
     this.curGarden = new SmartGarden(localGarden || { name: "Heaven Garden!" });
   }
 
   ionViewDidEnter() {
     if (this.conn.wsConnected) {
       this.setupDataChannel(1);
+    } else {
+      this.conn.connect();
+      this.conn.wsOn("connect", () => {
+        this.setupDataChannel(1);
+      });
     }
+    this.loadCurrentGarden();
+    this.station = new Station(JSON.parse(localStorage["currentStation"]));
     
-    this.conn.setupConnectToLocalGarden(this.curGarden.localIP);
-    this.conn.localSocket.attachEventListeners({
-      message: (e) => this.onLocalGardenEvent(e),
-      open: (e) => this.setupDataChannel(2)
-    });
+    // this.conn.setupConnectToLocalGarden(this.curGarden.localIP);
+    // this.conn.localSocket.attachEventListeners({
+    //   message: (e) => this.onLocalGardenEvent(e),
+    //   open: (e) => this.setupDataChannel(2)
+    // });
   }
 
   ionViewWillLeave() {
     // this.conn.socket.removeListener("GardenEvent", this.onGardenEvent);
-    this.conn.socket.removeAllListeners("GardenEvent");
+    // this.conn.socket.removeAllListeners("GardenEvent");
     this.attachGardenEvent = false;
     this.conn.leaveRoom(localStorage['ConnectedGarden'], (rs) => {
       console.log(rs);
     });
     for (let i=0; i<2000; i++) clearTimeout(i);
+    this.conn.disconnect();
 
-    this.conn.localSocket.clearListener("message");
-    this.conn.localSocket.clearListener("open");
-    this.conn.localSocket.close();
+    // this.conn.localSocket.clearListener("message");
+    // this.conn.localSocket.clearListener("open");
+    // this.conn.localSocket.close();
   }
 
 
@@ -79,13 +81,14 @@ export class GardenDetailPage implements OnInit {
   attachGardenEvent: boolean = false;
   setupDataChannel(type: number) {
     if (type==1 || type==3) {
-      this.conn.joinToRoom(localStorage['ConnectedGarden'], (rs) => {
+      // this.conn.joinToRoom(localStorage['ConnectedGarden'], (rs) => {
         // [Sự kiện]: Dữ liệu từ vườn gửi đến các app đang kết nối
-        if (!this.attachGardenEvent) {
-          this.attachGardenEvent = true;
-          this.conn.wsOn("GardenEvent", (data) => this.onGardenEvent(data));
-        }
-      });
+        // if (!this.attachGardenEvent) {
+        //   this.attachGardenEvent = true;
+        //   this.conn.wsOn("GardenEvent", (data) => this.onGardenEvent(data));
+        // }
+      // });
+      this.conn.wsOn(WS_EVENTS.environment, (data) => this.onGardenEvent(data));
     }
     // if (type==2 || type==3) {
     //   this.conn.localSocket.send(this.gardenProto.buildPackage([2,1], ''));
@@ -162,15 +165,22 @@ export class GardenDetailPage implements OnInit {
   focusCtl: any;
   activeTool: boolean = false;
   onFocusCtl(ctl) {
-    if (!this.focusCtl) this.focusCtl = ctl.equipment;
-    else this.focusCtl = ctl.equipment == this.focusCtl ? null : ctl.equipment;
+    if (!this.focusCtl) this.focusCtl = ctl;
+    else this.focusCtl = ctl == this.focusCtl ? null : ctl;
     this.activeTool = this.focusCtl != null;
   }
 
   onToggleControl(ctl, e) {
     e.stopImmediatePropagation();
-    ctl.state = ctl.state == "off" ? "on" : "off";
-    this.conn.wsSend("ControlGarden", { device: ctl.name, state: ctl.state });
+    ctl.state = !ctl.state;
+    this.conn.wsSend(WS_EVENTS.mobile2Garden, {
+      targetType: 'station',
+      targetId: this.station.id,
+      gardenId: this.curGarden.id,
+      state: {
+        [ctl.role]: ctl.state
+      }
+    });
   }
 
 }
